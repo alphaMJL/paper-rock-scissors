@@ -3,63 +3,100 @@ let playerScore = 0;
 let computerScore = 0;
 //outcome of current game
 let currentGame;   
-  
+function updateScore() {
+    switch (playerScore) {
+        case 1: document.getElementById('playerPointOne').style.backgroundColor = "green";
+        break;
+        case 2: document.getElementById('playerPointTwo').style.backgroundColor = "green";
+        break;
+        case 3: document.getElementById('playerPointThree').style.backgroundColor = "green";
+        break;
+        case 4: document.getElementById('playerPointFour').style.backgroundColor = "green";
+        break;
+        case 5: document.getElementById('playerPointFive').style.backgroundColor = "green";
+        document.getElementById('player-selection').innerHTML = '<button id="end-game" onclick="window.location.reload()">Play again?</button>'
+        document.getElementById('computer-selection').innerHTML = '<p id="end-dialog">YOU WIN THE MATCH!</p>'
         
+        break;
+    }
+
+    switch (computerScore) {
+        case 1: document.getElementById('computerPointOne').style.backgroundColor = "green";
+        break;
+        case 2: document.getElementById('computerPointTwo').style.backgroundColor = "green";
+        break;
+        case 3: document.getElementById('computerPointThree').style.backgroundColor = "green";
+        break;
+        case 4: document.getElementById('computerPointFour').style.backgroundColor = "green";
+        break;
+        case 5: document.getElementById('computerPointFive').style.backgroundColor = "green";
+        document.getElementById('player-selection').innerHTML = '<button id="end-game" onclick="window.location.reload()">Play again?</button>'
+        document.getElementById('computer-selection').innerHTML = '<p id="end-dialog">YOU LOSE THE MATCH!</p>'
+        
+        break;
+    }
+}
+  
+document.getElementById('btn-paper').addEventListener('click', callPaper)
+
+document.getElementById('btn-scissors').addEventListener('click', callScissors)
+
+document.getElementById('btn-rock').addEventListener('click', callRock)
+
+function callScissors() {
+    document.getElementById('player-selected').src = "images/scissors.jpg"
+    playRound('scissors');
+}
+
+function callPaper() {
+    document.getElementById('player-selected').src = "images/paper.jpg"
+    playRound('paper');
+}
+
+function callRock() {
+    document.getElementById('player-selected').src = "images/rock.jpg"
+    playRound('rock')
+}
 function currentScore() {
     return `The current score is YOU: ${playerScore} COMPUTER: ${computerScore}`;
 }
 
 
-function userPlay() {
-    //allows player to type choice and will only accept acceptableChoices as answers ignoring case
-    let acceptableChoices = "rock paper scissors"
-    let check = false;
-    let playerChoice;
-
-    while (check === false) {
-        let playerChoice = prompt("Please type your Selection of Paper, Rock or Scissors")
-
-        if (acceptableChoices.indexOf(playerChoice.toLowerCase()) === -1) {
-            alert("That is not an acceptable choice");
-
-        } 
-        else {
-
-            check = true;
-            return playerChoice;
-        }
-    }           
-}
-
-function computerPlay() {
+   
+function playRound(playerSelection) {
+    let  computerSelection = "";
        //create variable to store roll. 0-1 roughly divided between choices
     let randomRoll = Math.random();
 
     if (randomRoll >= 0 && randomRoll <= 0.33 ){
-            return "Paper";
-
-     } else if (randomRoll > 0.33 && randomRoll <= 0.66) {
-            return "Rock";
-    } else {
-            return "Scissors";
+            computerSelection = "Paper";
+            document.getElementById('computer-selected').src = "images/paper.jpg"
+    } 
+     else if (randomRoll > 0.33 && randomRoll <= 0.66) {
+            computerSelection = "Rock";
+            document.getElementById('computer-selected').src = "images/rock.jpg"
+        }
+    else {
+            computerSelection = "Scissors";
+            document.getElementById('computer-selected').src = "images/scissors.jpg"
     }   
-}
-   
-function playRound(playerSelection, computerSelection) {
-    console.log(`You chose ${playerSelection} and the computer chose ${computerSelection}`)
+
+    document.getElementById('msg-center').innerText = `You chose ${playerSelection} and the I chose ${computerSelection}`
+
+
     // outcome if you pick rock   
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection.toLowerCase() === "rock") {
-            currentGame = "Draw!";
+            document.getElementById("match-outcome").innerText = "Draw!";
         }
         else if (computerSelection.toLowerCase() === "paper") {
             computerScore++;
-            currentGame = "Paper beats Rock! You Lose!";     
+            document.getElementById("match-outcome").innerText = "Paper beats Rock! You Lose!";     
         }
 
         else if (computerSelection.toLowerCase() === "scissors") {
             playerScore++;
-            currentGame = "Rock beats scissors. You Win!";  
+            document.getElementById("match-outcome").innerText = "Rock beats scissors. You Win!";  
         }
     }
     // outcome if you pick paper
@@ -67,16 +104,16 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection.toLowerCase() === "rock") {
             playerScore++;
-            currentGame = "Paper beats rock! You Win!";
+            document.getElementById("match-outcome").innerText = "Paper beats rock! You Win!";
                 
         }
         else if (computerSelection.toLowerCase() === "paper") {
-                currentGame = "Draw!";
+                document.getElementById("match-outcome").innerText = "Draw!";
         }
 
         else if (computerSelection.toLowerCase() === "scissors") {
                 computerScore++;
-                currentGame = "Rock beats scissors! You Lose!";
+                document.getElementById("match-outcome").innerText = "Scissors beats Paper! You Lose!";
                 
         }
 
@@ -86,40 +123,20 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection.toLowerCase() === "rock") {
             computerScore++;
-            currentGame = "Rock beats scissors! You Lose!";
+            document.getElementById("match-outcome").innerText = "Rock beats scissors! You Lose!";
                
         }
         else if (computerSelection.toLowerCase() === "paper") {
             playerScore++;
-            currentGame = "Scissors beats paper! You Win!";
+            document.getElementById("match-outcome").innerText = "Scissors beats paper! You Win!";
                
         }
 
         else if (computerSelection.toLowerCase() === "scissors") {
-               currentGame = "Draw!";
+               document.getElementById("match-outcome").innerText = "Draw!";
         }
 
     }  
+    
+    updateScore();
 }
-
-
-
-
-function game() {
-    //five rounds match 
-    for (let i = 1; i <= 5; i++) {
-        console.log(`MATCH NUMBER: ${i}`)
-        playRound(userPlay(), computerPlay());
-        
-        console.log(currentGame);
-        console.log(currentScore())                  
-    }
-    console.log("Game over!")
-}
-// run game
-game();
-
-
-   
-
-

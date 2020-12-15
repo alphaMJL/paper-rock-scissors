@@ -4,13 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js">
-
-    </script>
+    <script src="script.js" async></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  Paper Rock Scissors Game
-<button onClick="window.location.reload();">Try Again!</button>
-<p id="results"></p>
+  <h1 id="title">Paper Rock Scissors</h1>
+  <h3>Can you beat the computer and be the first to 5 points?</h3>
+  <div id="main-container">
+    <div id="player-window">
+      <div class="selection" id="player-selection">
+        <button class="selection-button" id="btn-paper">Paper</button>
+        <button class="selection-button" id="btn-rock">Rock</button>
+        <button class="selection-button" id="btn-scissors">Scissors</button>
+        
+      </div>
+
+      <div class="current-selected">
+        <img class="selected-image" id="player-selected" src="images/paperrockscissors.jpg">
+      </div>
+      <div class="score">
+        Current Wins:
+          <span class="dot" id="playerPointOne"></span>
+          <span class="dot" id="playerPointTwo"></span>
+          <span class="dot" id="playerPointThree"></span>
+          <span class="dot" id="playerPointFour"></span>
+          <span class="dot" id="playerPointFive"></span>
+      </div>
+
+    </div>
+    <div id="computer-window">
+      <div class="selection" id="computer-selection">
+        <p id="msg-center">Can you beat the computer?</p>
+        <p id="match-outcome">Who will win?</p>
+      </div>
+      
+      <div class="current-selected">
+        <img class="selected-image" id="computer-selected" src="images/paperrockscissors.jpg">
+      </div>
+      <div class="score">
+        Current Wins:
+        <span class="dot" id="computerPointOne"></span>
+        <span class="dot" id="computerPointTwo"></span>
+        <span class="dot" id="computerPointThree"></span>
+        <span class="dot" id="computerPointFour"></span>
+        <span class="dot" id="computerPointFive"></span>
+      </div>
+    </div>
+  </div>
+<!-- <button onClick="window.location.reload();">Try Again!</button> -->
+
 </body>
 </html>

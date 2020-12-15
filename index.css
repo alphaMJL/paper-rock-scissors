@@ -1,0 +1,133 @@
+body {
+  font-family: "Mv Boli", sans-serif;
+}
+#main-container {
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  width: 500px;
+  height: 600px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 30px;
+}
+#title {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+h3 {
+  text-align: center;
+}
+
+#player-window {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+#computer-window {
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.current-selected {
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  order: 2;
+}
+
+.selection {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border-radius: 15px;
+  border: 1px solid black;
+  width: 300px;
+  height: 75px;
+  order: 1;
+}
+
+#player-selection {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.score {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border-radius: 15px;
+  border: 1px solid black;
+  width: 400px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  order: 0;
+}
+
+.selected-image {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.selection-button {
+  height: 60px;
+  width: 70px;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  filter: drop-shadow(5px 5px 8px black);
+}
+
+#computer-window > .score {
+  order: 2;
+}
+
+#computer-window > .selection {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border-radius: 15px;
+  order: 1;
+  font-size: 15px;
+}
+
+#computer-window > .current-selected {
+  order: 0;
+}
+
+#computer-selection {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+#match-outcome {
+  margin-top: 0px;
+}
+
+#end-game {
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  width: 150px;
+  height: 50px;
+}
+
+button {
+  text-align: center;
+
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  border-radius: 15px;
+}
